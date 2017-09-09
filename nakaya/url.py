@@ -23,7 +23,7 @@ def loopRequest(url, maxRetry=100, isPrint=False):
 
     return mark
 
-def imageDownload(url, path, exe=".png", isPrint=False):
+def imageDownload(url, path, name="", exe=".png", isPrint=False):
 
     isSuccess = False
 
@@ -32,19 +32,22 @@ def imageDownload(url, path, exe=".png", isPrint=False):
         filename = url.split('/')[-1]
         basename = filename.split(".")[0]
 
-        saveData = open(path + basename + exe, 'wb');
+        if name != "":
+            basename = name
+
+        filepath = path + basename + exe
+        saveData = open(filepath, 'wb');
 
         saveData.write(i.read());
         saveData.close()
-        isSuccess = True        
         i.close()
+        isSuccess = True        
 
     except:
         isSuccess = False
+        print ('[error:imageDownload]: ' + url)
     finally :
-        if isSuccess:
-            print ('>>> getImage:' + filename)    
-        else :
-            print ('[error:imageDownload]: ' + url)
+        if isPrint:
+            print ('>>> getImage:' + filepath)
 
-    return isSuccess
+    return isSuccess, filepath
