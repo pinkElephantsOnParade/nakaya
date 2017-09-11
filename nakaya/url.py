@@ -26,7 +26,7 @@ def loopRequest(url, maxRetry=100, isPrint=False):
 def imageDownload(url, path, name="", exe=".png", isPrint=False):
 
     isSuccess = False
-
+    filepath = ""
     try:
         i = urllib.request.urlopen(url)
         filename = url.split('/')[-1]
