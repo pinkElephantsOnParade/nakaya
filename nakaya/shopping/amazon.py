@@ -11,6 +11,7 @@ class Goods:
         self.money = ""
         self.imageurl = ""
         self.imagepath = ""
+        self.soldout = False
 
     def __init__(self, asin="", title="", money=0, imageurl=[]):
         self.asin = asin
@@ -33,6 +34,9 @@ class Goods:
     def getImagePath(self):
         return self.imagepath
 
+    def getSoldout(self):
+        return self.soldout
+
     def setAsin(self, asin):
         self.asin = asin
 
@@ -48,6 +52,8 @@ class Goods:
     def setImagePath(self, imagepath):
         self.imagepath = imagepath
 
+    def setSoldout(self, soldout):
+        self.soldout = soldout
 
     def toString(self):
         text = self.asin + "\n"
