@@ -18,6 +18,9 @@ class Goods:
         self.title = title
         self.money = money
         self.imageurl = imageurl
+        self.imagepath = ""
+        self.soldout = False
+
 
     def getAsin(self):
         return self.asin
