@@ -20,6 +20,7 @@ class Goods:
         self.money = money
         self.imageurl = imageurl
         self.condition = condition
+        self.imagepath = ""
 
     def getID(self):
         return self.id
