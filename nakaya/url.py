@@ -6,16 +6,14 @@ def loopRequest(url, maxRetry=100, isPrint=False):
     count = 0
     mark = None
     while (0 <= maxRetry):
-        if soupMain is None:
-            try:
-                with urllib.request.urlopen(url) as html:
-                    mark = html.read().decode("utf-8")
-            except HTTPError as e:
-                time.sleep(5)
-                maxRetry = maxRetry - 1
-                count = count + 1
-        else :
+        try:
+            html = urllib.request.urlopen(url)
+            mark = html.read().decode("utf-8")
             maxRetry = -1 
+        except HTTPError as e:
+            time.sleep(5)
+            maxRetry = maxRetry - 1
+            count = count + 1
 
     if isPrint:
         print("[url]" + url)
