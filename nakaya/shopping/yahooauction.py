@@ -7,64 +7,71 @@ from nakaya.shopping.key import yahooDict
 
 class Goods:
     def __init__(self):
-        self.id = ""
-        self.title = ""
-        self.money = ""
-        self.imageurl = ""
-        self.condition = ""
-        self.imagepath = ""
+        self.id_ = ""
+        self.title_ = ""
+        self.money_ = ""
+        self.imageurl_ = ""
+        self.condition_ = ""
+        self.imagepath_ = ""
 
     def __init__(self, id="", title="", money=0, imageurl=[], condition=""):
-        self.id = id
-        self.title = title
-        self.money = money
-        self.imageurl = imageurl
-        self.condition = condition
-        self.imagepath = ""
+        self.id_ = id
+        self.title_ = title
+        self.money_ = money
+        self.imageurl_ = imageurl
+        self.condition_ = condition
+        self.imagepath_ = ""
 
     def getID(self):
-        return self.id
+        return self.id_
 
     def getTitle(self):
-        return self.title
+        return self.title_
 
     def getMoney(self):
-        return self.money
+        return self.money_
 
     def getImageURL(self):
-        return self.imageurl
+        return self.imageurl_
 
     def getCondition(self):
-        return self.condition
+        return self.condition_
 
     def getImagePath(self):
-        return self.imagepath
+        return self.imagepath_
 
     def setID(self, asin):
-        self.id = id
+        self.id_ = id
 
     def setTitle(self, title):
-        self.title = title
+        self.title_ = title
 
     def setMoney(self, content):
-        self.money = money
+        self.money_ = money
 
     def setImageURL(self, imageurl):
-        self.imageurl = imageurl
+        self.imageurl_ = imageurl
 
     def setCondition(self, condition):
-        self.condition = condition
+        self.condition_ = condition
 
     def setImagePath(self, imagepath):
-        self.imagepath = imagepath
+        self.imagepath_ = imagepath
+
+    id = property(getID, setID)
+    title = property(getTitle, setTitle)
+    money = property(getMoney, setMoney)
+    imageURL = property(getImageURL, setImageURL)
+    condition = property(getCondition, setCondition)
+    imagePath = property(getImagePath, setImagePath)
 
     def toString(self):
         text = self.id + "\n"
         text += self.title + "\n"
-        text += self.money + "\n"
-        text += str(self.image) + "\n"
+        text += str(self.money) + "\n"
+        text += str(self.imageURL) + "\n"
         text += self.condition + "\n"
-        text += self.imagepath
+        text += self.imagePath
         return text
 
 

@@ -6,63 +6,69 @@ from nakaya.shopping.key import amazonDict
 class Goods:
 
     def __init__(self):
-        self.asin = ""
-        self.title = ""
-        self.money = ""
-        self.imageurl = ""
-        self.imagepath = ""
-        self.soldout = False
+        self.asin_ = ""
+        self.title_ = ""
+        self.money_ = ""
+        self.imageurl_ = ""
+        self.imagepath_ = ""
+        self.soldout_ = False
 
     def __init__(self, asin="", title="", money=0, imageurl=[]):
-        self.asin = asin
-        self.title = title
-        self.money = money
-        self.imageurl = imageurl
-        self.imagepath = ""
-        self.soldout = False
-
+        self.asin_ = asin
+        self.title_ = title
+        self.money_ = money
+        self.imageurl_ = imageurl
+        self.imagepath_ = ""
+        self.soldout_ = False
 
     def getAsin(self):
-        return self.asin
+        return self.asin_
 
     def getTitle(self):
-        return self.title
+        return self.title_
 
     def getMoney(self):
-        return self.money
+        return self.money_
 
     def getImageURL(self):
-        return self.imageurl
+        return self.imageurl_
 
     def getImagePath(self):
-        return self.imagepath
+        return self.imagepath_
 
     def getSoldout(self):
-        return self.soldout
+        return self.soldout_
 
     def setAsin(self, asin):
-        self.asin = asin
+        self.asin_ = asin
 
     def setTitle(self, title):
-        self.title = title
+        self.title_ = title
 
     def setMoney(self, content):
-        self.money = money
+        self.money_ = money
 
     def setImageURL(self, imageurl):
-        self.imageurl = imageurl
+        self.imageurl_ = imageurl
 
     def setImagePath(self, imagepath):
-        self.imagepath = imagepath
+        self.imagepath_ = imagepath
 
     def setSoldout(self, soldout):
-        self.soldout = soldout
+        self.soldout_ = soldout
+
+    asin = property(getAsin, setAsin)
+    title = property(getTitle, setTitle)
+    money = property(getMoney, setMoney)
+    imageURL = property(getImageURL, setImageURL)
+    imagePath = property(getImagePath, setImagePath)
+    soldout = property(getSoldout, setSoldout)
 
     def toString(self):
         text = self.asin + "\n"
         text += self.title + "\n"
-        text += self.money + "\n"
-        text += str(self.image) + "\n"
+        text += str(self.money) + "\n"
+        text += str(self.imageURL) + "\n"
         text += self.imagepath
         return text
 
