@@ -22,6 +22,12 @@ class Goods:
         self.condition_ = condition
         self.imagepath_ = ""
 
+    def __str__(self):
+        return self.toString()
+
+    def __repr__(self):
+        return self.toString()
+
     def getID(self):
         return self.id_
 

@@ -21,6 +21,12 @@ class Goods:
         self.imagepath_ = ""
         self.soldout_ = False
 
+    def __str__(self):
+        return self.toString()
+
+    def __repr__(self):
+        return self.toString()
+
     def getAsin(self):
         return self.asin_
 
@@ -69,7 +75,8 @@ class Goods:
         text += self.title + "\n"
         text += str(self.money) + "\n"
         text += str(self.imageURL) + "\n"
-        text += self.imagepath
+        text += self.imagePath + "\n"
+        text += str(self.soldout)
         return text
 
 def getSearchPageCount(keyword):
