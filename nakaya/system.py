@@ -23,3 +23,9 @@ def loopProcess(func, args=(), maxRetry=100, isPrint=False, Exceptions=(Exceptio
         if isPrint:
             print( "[" + func.__name__ +":count]" + str(count))
     return dst
+
+def timeMeasure(func, args=()):
+    start = time.time()
+    func(*args)
+    elapsed_time = time.time() - start
+    return elapsed_time
