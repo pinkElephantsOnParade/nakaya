@@ -97,7 +97,6 @@ def searchPageCount(keyword):
     return math.ceil(count / 20)
 
 def searchAuctionIDList(keyword,pagecount,alist):
-
     for i in range(pagecount):
         req = yahaucSearchRequest(keyword, i+1)
         soup = BeautifulSoup(req, "lxml")
@@ -112,3 +111,10 @@ def getAuctionItemContents(aid):
     response = urllib.request.urlopen(yahooDict["detailurl"] + params)
     return response.read().decode("utf-8")
 
+def searchRequest(keyword,dic={}):
+    conditions = {'appid': yahooDict["appid"],
+                 'query': keyword}
+    conditions.update(dic)
+    params = urllib.parse.urlencode(conditions)
+    response = urllib.request.urlopen(yahooDict["searchurl"] + params)
+    return response.read().decode("utf-8")
