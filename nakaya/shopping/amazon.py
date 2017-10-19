@@ -12,6 +12,7 @@ class Goods:
         self.imageurl_ = ""
         self.imagepath_ = ""
         self.soldout_ = False
+        self.detailpageurl_ = ""
 
     def __init__(self, asin="", title="", money=0, imageurl=[]):
         self.asin_ = asin
@@ -20,6 +21,7 @@ class Goods:
         self.imageurl_ = imageurl
         self.imagepath_ = ""
         self.soldout_ = False
+        self.detailpageurl_ = ""
 
     def __str__(self):
         return self.toString()
@@ -45,6 +47,9 @@ class Goods:
     def getSoldout(self):
         return self.soldout_
 
+    def getDetailPageUrl(self):
+        return self.detailpageurl_
+
     def setAsin(self, asin):
         self.asin_ = asin
 
@@ -63,12 +68,16 @@ class Goods:
     def setSoldout(self, soldout):
         self.soldout_ = soldout
 
+    def setDetailPageUrl(self, url):
+        self.detailpageurl_ = url
+
     asin = property(getAsin, setAsin)
     title = property(getTitle, setTitle)
     money = property(getMoney, setMoney)
     imageURL = property(getImageURL, setImageURL)
     imagePath = property(getImagePath, setImagePath)
     soldout = property(getSoldout, setSoldout)
+    detailpageurl = property(getDetailPageUrl, setDetailPageUrl)
 
     def toString(self):
         text = self.asin + "\n"
@@ -76,7 +85,8 @@ class Goods:
         text += str(self.money) + "\n"
         text += str(self.imageURL) + "\n"
         text += self.imagePath + "\n"
-        text += str(self.soldout)
+        text += str(self.soldout) + "\n"
+        text += self.detailpageurl
         return text
 
 def getSearchPageCount(keyword):
@@ -89,7 +99,7 @@ def getSearchPageCount(keyword):
     soup = BeautifulSoup(product, "lxml")
     return int(soup.find("items").find("totalpages").text)
 
-def getSearch(keyword, page, title=""):
+def getSearch(keyword, page=1, title=""):
     amazon = bottlenose.Amazon(
         amazonDict["AWSAccessKeyId"],
         amazonDict["AWSSecretKey"],
