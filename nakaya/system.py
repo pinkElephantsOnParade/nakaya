@@ -26,6 +26,9 @@ def loopProcess(func, args=(), maxRetry=100, isPrint=False, Exceptions=(Exceptio
 
 def timeMeasure(func, args=()):
     start = time.time()
-    func(*args)
+    if 0 < len(args):
+        func(*args)
+    else :
+        func()
     elapsed_time = time.time() - start
     return elapsed_time
